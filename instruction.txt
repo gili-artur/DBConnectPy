@@ -52,7 +52,19 @@ pip freeze > requirements.txt
 26. Добавил .gitignore, взял текст гитигнора отсюда:
 https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
 
+27. Добавил сериализатор
 
+28.
+
+29. Добавил сваггер, но работает костыльно.
+Ошибка:
+Error during template rendering
+In template /home/kocmoc/PycharmProjects/DBConnectPy/venv/lib/python3.8/site-packages/rest_framework_swagger/templates/rest_framework_swagger/index.html, error at line 2
+
+Костыль:
+https://groups.google.com/g/django-users/c/fluqSz9X-zs/m/i3v0_zhVAAAJ
+Are you running django 3.0?
+If you are you shouldn't use: {% load static from staticfiles %} anymore. You should just write {% load static %}
 
 
 _____
