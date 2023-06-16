@@ -1,0 +1,35 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная страница БД{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1> DATABASE </h1>
+    <p>Данные из таблицы Users</p>
+
+    <div class="alert alert-warning">
+        <table border="1">
+            <tr>
+                <th><p>Фамилия</p></th>
+                <th><p>Имя</p></th>
+                <th><p>Отчество</p></th>
+                <th><p>День рождения</p></th>
+                <th><p>Город</p></th>
+                <th><p>Телефон</p></th>
+            </tr>
+            {% for el in site_users %}
+            <tr>
+                <td><p>{{ el.surname }}</p></td>
+                <td><p>{{ el.firstname }}</p></td>
+                <td><p>{{ el.patronymic }}</p></td>
+                <td><p>{{ el.birthdate }}</p></td>
+                <td><p>{{ el.city }}</p></td>
+                <td><p>{{ el.telephone }}</p></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+</div>
+{% endblock %}

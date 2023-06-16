@@ -1,0 +1,81 @@
+1. Установил PostgreSQL на комп (база данных)
+2. Установил pgAdmin 4 на комп (UI для БД)
+3. Установил пакет psycopg2 в Pycharm. Не работает автоматически, пришлось вручную через консоль пайчарма устанавливать. команды:
+    pip install psycopg2-binary
+    pip install --upgrade pip
+
+4. Установил Django и
+5. Создал проект Джанго и создал проект
+    1. pip install django
+    2. django-admin startproject hanov
+6. Запуск сервера:
+    python manage.py runserver
+7. Создание приложения "main"
+    python manage.py startapp main
+8. Настройки:
+    hanov/settings.py -> INSTALLED_APPS = [ 'main', ]
+9. Добавил отслеживание главной страницы в hanov/urls.py
+10. В main добавил директорию "templates", 'main'
+11. Добавил html страницы, упростил html шаблоны с помощью шаблонизатора Jinja
+12. Добавил css, сделал читабельный вид сайта
+
+13. Создал новое приложение database, добавил в hanov/settings.py
+14. Добавил шаблон, отредактировал ссылки
+
+15. В файле database/models.py добавил модель Users
+16. Создал и прогнал миграции
+    python manage.py makemigrations
+    python manage.py migrate
+17. Создал суперпользователя Django
+    python manage.py createsuperuser
+    admin = qwerty
+18. В файле 'hanov/settings.py' поменял настройки DATABASES
+19. Зашел на страницу админа. Таблица отображается, все круто.
+20. Сделал в PostgreSQL номер телефона уникальным. Прописал команду в постгресе через query tool:
+ALTER TABLE database_users ADD CONSTRAINT unique_telephone UNIQUE (telephone);
+Теперь при добавлении записи с таким же номером выпадает ошибка:
+duplicate key value violates unique constraint "unique_telephone"
+DETAIL:  Key (telephone)=(89171365070) already exists.
+
+21. В моделях при инициализации сделал return self.telephone, чтоб список отображался по телефонам
+22. В hanov/settings.py сделал коннект к бд
+22. Сделал номер телефона в таблице уникальным.
+23. Сделал вывод таблицы "users" на страницу bd.html.
+
+24. установил пакеты djangorestframework и django-rest-knox
+pip install djangorestframework
+pip install django-rest-knox
+
+25. Сохранил зависимости в requirements.txt
+pip freeze > requirements.txt
+
+26. Добавил .gitignore, взял текст гитигнора отсюда:
+https://djangowaves.com/tips-tricks/gitignore-for-a-django-project/
+
+
+
+
+_____
+
+1. Допилить RestApi
+2. Сделать Swagger, например ./api/doc
+
+-----
+3. Сделать Docker (балансировщик запросов)
+Обернуть в докер-контейнер,
+4. Кибернейт (kubernetes)
+https://habr.com/ru/articles/320542/
+
+5. Реализовать сборку проекта на своем компе и залив на удаленный сервак через SSH
+
+6. Ключи : https://stackoverflow.com/questions/62925571/how-do-i-use-env-in-django
+В Gitlab: Settings -> CI/CD -> Variables
+
+
+
+
+______________________
+Hotkeys
+Ctrl+/ - comment
+Ctrl + Space - Code completion(Подсказки)
+Ctrl +
