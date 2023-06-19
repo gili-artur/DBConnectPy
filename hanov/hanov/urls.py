@@ -2,25 +2,32 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from rest_framework_swagger.views import get_swagger_view
-
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
 from dbconn.views import *
-from rest_framework import routers
+from rest_framework import routers, permissions
 
 router = routers.SimpleRouter()
 router.register(r'', PeopleViewSet)
 
-# https://django-rest-swagger.readthedocs.io/en/latest/
-schema_view = get_swagger_view(title='Pastebin API')
-
+# https://pypi.org/project/drf-yasg/
+schema_view = get_schema_view(
+    openapi.Info(
+        title="DBConnectPy API",
+        default_version='v1',
+        description="API Documentation v1",
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('main.urls')),
                   path('db/', include('dbconn.urls')),
                   path('api/', include(router.urls)),
-                  path('api/doc', schema_view)
+                  path('swagger<format>/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+                  path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+                  path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 
-                  # path('api/', PeopleViewSet.as_view({'get': 'list'})),
-                  # path('api/<int:pk>/', PeopleViewSet.as_view({'put': 'update'})),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

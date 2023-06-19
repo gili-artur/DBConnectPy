@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'dbconn',
     'main',
     'rest_framework',
-    'rest_framework_swagger',
+    'drf_yasg',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,3 +136,9 @@ REST_FRAMEWORK = {
 }
 
 REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
+
+# Swagger_settings https://django-rest-swagger.readthedocs.io/en/stable-0.3.x/settings.html
+SWAGGER_SETTINGS = {
+    'exclude_url_names': ['/api/doc'],
+    'exclude_namespaces': ['apischema'],
+}
