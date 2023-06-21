@@ -14,5 +14,3 @@ def db_index(request):
 class PeopleViewSet(viewsets.ModelViewSet):
     queryset = People.objects.all()
     serializer_class = PeopleSerializer
-
-

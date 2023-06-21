@@ -64,7 +64,19 @@ pip install drf-yasg
 30. Добавил кнопки на сайте, исправил мелкие ошибки, проверил api.
 Обновил requirements.txt
 
+31. сделал ключ джанго через .env
 
+32. css не подтягивается, как бы я этого не хотел. нашел команду:
+python manage.py runserver --insecure
+Таким образом подтянулось лол. Нашел описание проблемы:
+https://stackoverflow.com/questions/5836674/why-does-debug-false-setting-make-my-django-static-files-access-fail
+
+----
+Подготовка деплоя:
+1. В settings отключил дебаг мод
+2. сделал .env, выгрузил ключ
+3. Обновил requirements.txt
+4.
 
 
 -----
@@ -77,6 +89,8 @@ https://habr.com/ru/articles/320542/
 
 6. Ключи : https://stackoverflow.com/questions/62925571/how-do-i-use-env-in-django
 В Gitlab: Settings -> CI/CD -> Variables
+
+
 
 
 
