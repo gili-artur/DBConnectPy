@@ -135,15 +135,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = ''
+# STATIC_ROOT = ''
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = 'hanov/main/static/'
 
-STATICFILES_DIRS = [
-    # BASE_DIR / "static",
-    BASE_DIR / 'main/static/',
-    # 'hanov/main/static/'
-]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'main/static'),
+)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',

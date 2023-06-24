@@ -26,15 +26,10 @@ RUN pip install -r requirements.txt
 
 COPY . /var/www/app
 
-#CMD ["python","-u","main.py"]
-#CMD ["python /var/www/app/hanov/manage.py runserver --insecure"]
-CMD [ "python", "hanov/manage.py", "runserver", "0.0.0.0:8000" ]
+RUN chmod 755 ./docker/python/init.sh
 
-#RUN useradd -rms /bin/bash yt && chmod 777 /opt /run
-#WORKDIR /dbcp
-#RUN mkdir /dbcp/static && chown -R yt:yt /yt && chmod 755 /yt
-#COPY --chown=yt:yt . .
-#RUN pip install -r requirements.txt
-#USER yt
-#CMD ["gunicorn","-b","0.0.0.0:8001","soaqaz.wsgi:application"]
+ENTRYPOINT ./docker/python/init.sh
+
+#CMD [ "python", "hanov/manage.py", "runserver", "0.0.0.0:8000" ]
+
 
