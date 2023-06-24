@@ -80,6 +80,18 @@ WSGI_APPLICATION = 'hanov.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'DBConnectPY',
+#         'USER': 'admin',
+#         'PASSWORD': 'qwerty',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
+#
+#
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE'),
@@ -125,11 +137,12 @@ USE_TZ = True
 
 STATIC_ROOT = ''
 
-STATIC_URL = '/main/templates/main/static/'
+STATIC_URL = 'hanov/main/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    BASE_DIR / '/main/static/',
+    # BASE_DIR / "static",
+    BASE_DIR / 'main/static/',
+    # 'hanov/main/static/'
 ]
 
 STATICFILES_FINDERS = (

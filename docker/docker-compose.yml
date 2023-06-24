@@ -1,0 +1,44 @@
+version: "3.5"
+
+services:
+  postgres:
+    container_name: dbcp_pstgrs #
+    image: postgres:15-alpine #Берет с DockerHub
+    environment:
+      POSTGRES_DB: "test_docker"
+      POSTGRES_PASSWORD: "adminps"
+      POSTGRES_USER: "qwerty"
+    volumes:
+      - /home/kocmoc/PycharmProjects/db_backup/DBConnectPy:/var/lib/posgresql/data:rw # Бекап БД. Слева - локальный путь где будут храниться данные, справа - данные из Postgresql в контейнере
+    ports:
+      - 5433:5432 # Слева - внешний порт, справа - внутренний
+#    command: sh -c "cd hanov && gunicorn --bind 0.0.0.0:8000 hanov.wsgi:application"
+    networks:
+      - dbcp
+    restart: always # Если упадет - рестарт всегда
+
+  python:
+    container_name: dbcp_python
+    build:
+      context: ./../ # Путь к корню проекта, откуда начнет сборку
+      dockerfile:  ./docker/python/Dockerfile # путь к Dockerfile
+    ports:
+      - 7777:8000 # Слева - внешний порт, справа - внутренний
+    networks:
+      - dbcp
+    env_file:
+      - ./../.env
+    restart: always # Если упадет - рестарт всегда
+
+
+
+
+
+
+
+networks:
+  dbcp:
+    ipam:
+      config:
+        - subnet: "192.168.208.0/24"
+    name: dbcp

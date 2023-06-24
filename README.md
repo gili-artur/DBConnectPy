@@ -7,6 +7,7 @@
 
 1. Проверить что питон установлен:
 
+
     python3 --version
     Python 3.x.x
 
@@ -21,7 +22,7 @@
     pip install -r requirements.txt
 
 
-3. Мигации
+3. Мигации:
 
 
     cd hanov
@@ -31,7 +32,7 @@
 
 4. Создать файл ".env", прописать Django SECRET_KEY и подключение к БД
 
-5. Запуск приложения
+5. Запуск приложения:
 
 
     python manage.py runserver --insecure
