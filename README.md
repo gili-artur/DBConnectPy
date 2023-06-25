@@ -35,6 +35,44 @@
 5. Запуск приложения:
 
 
-    python manage.py runserver --insecure
+    python manage.py runserver 
+
+__________________________
+
+Docker-compose
+
+1. Поднять весь проект командой make up
 
 
+    make up
+
+
+2. Нужно создать Django администратора. Сделать это можно 2 способами:
+
+
+    make app
+
+    or
+
+    docker exec -ti dbcp_python sh
+
+Далее ввести команду создания администратора:
+
+
+    python manage.py createsuperuser
+
+    >>Имя пользователя (leave blank to use 'root'): admin
+    Адрес электронной почты: 
+    Password: 
+    Password (again): 
+    Введённый пароль слишком короткий. Он должен содержать как минимум 8 символов.
+    Введённый пароль слишком широко распространён.
+    Bypass password validation and create user anyway? [y/N]: y
+    Superuser created successfully.
+
+
+3. Основная страница сайта: 
+http://127.0.0.1:8081/
+http://127.0.0.1:8081/admin/ - Админка
+http://127.0.0.1:8081/api/ - API
+http://127.0.0.1:8081/swagger/ - Swagger

@@ -25,7 +25,6 @@ services:
       - ./../.env
     ports:
       - 7777:8000 # Слева - внешний порт, справа - внутренний
-#    command: sh -c "cd hanov && gunicorn --bind 0.0.0.0:7777 hanov.wsgi:application"
     depends_on:
       - postgres
     networks:
@@ -38,9 +37,9 @@ services:
       context: ./../ # Путь к корню проекта, откуда начнет сборку
       dockerfile: ./docker/nginx/Dockerfile # путь к Dockerfile
     ports:
-      - 8081:80
+      - 8081:80 # Слева - внешний порт, справа - внутренний
     depends_on:
-      - python
+      - python # смотрит на контейнер python
     networks:
       - dbcp
     restart: always

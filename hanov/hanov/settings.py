@@ -29,11 +29,14 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8081']
+
 ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'dbconn',
     'main',
     'rest_framework',
@@ -90,8 +93,8 @@ WSGI_APPLICATION = 'hanov.wsgi.application'
 #         'PORT': '5432'
 #     }
 # }
-#
-#
+
+
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE'),
@@ -137,18 +140,25 @@ USE_TZ = True
 
 # STATIC_ROOT = ''
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'main/static/generated')
 
-STATIC_URL = 'hanov/main/static/'
+STATIC_URL = 'hanov/main/static/generated/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'main/static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'main/static'),
+# )
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'main/static'), os.path.join(BASE_DIR, 'main/static'),)
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+MIDDLEWARE_CLASSES = [  # 'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
