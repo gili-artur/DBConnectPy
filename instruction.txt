@@ -83,33 +83,23 @@ backports.zoneinfo==0.2.1;python_version<"3.9"
 3. В settings скрыл ключи через dotenv
 3. Обновил requirements.txt
 5. Добавил директорию docker, добавил Dockerfile, docker-compose.yml
-6. Временно вернул сеттинги в изначальное состояние, добавил CSRF_TRUSTED_ORIGINS в settings.py
-7. Добавил костыль в requirements.txt
+6. Временно вернул сеттинги в изначальное состояние, добавил "CSRF_TRUSTED_ORIGINS" в settings.py
+7. Добавил костыль(?) в requirements.txt
+backports.zoneinfo==0.2.1;python_version<"3.9"
 8. Добавил nginx, добавил настройки. В питоне добавил init.sh, который вызывает:
-а) копию всех статиков со всего проекта
-б) запускает сервер
-в) запускает gunicorn
+а) запускает миграции
+б) копию всех статиков со всего проекта
+в) запускает сервер
+г) запускает gunicorn
 9)
-
-Нужно:
-1. Сделать .env в контейнерах
-2. Разобраться с Gunicorn
-3. Разобраться с Nginx
-
-
-
 
 
 -----
-3. Сделать Docker (балансировщик запросов)
-Обернуть в докер-контейнер,
-4. Кибернейт (kubernetes)
-https://habr.com/ru/articles/320542/
 
-5. Реализовать сборку проекта на своем компе и залив на удаленный сервак через SSH
+Recs:
+1. Реализовать сборку проекта на своем компе и залив на удаленный сервак через SSH
 
-6. Ключи : https://stackoverflow.com/questions/62925571/how-do-i-use-env-in-django
-В Gitlab: Settings -> CI/CD -> Variables
+6. Ключи в Gitlab: Settings -> CI/CD -> Variables
 
 
 
@@ -125,8 +115,6 @@ Ctrl +
 
 _______________________
 Notes:
-2.
-
 
 Собрать контейнер:
 docker compose -f ./docker/docker-compose.yml up -d --build
