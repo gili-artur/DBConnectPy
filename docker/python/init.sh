@@ -1,13 +1,11 @@
 #!/bin/sh
 set -e
 
-echo 1
+echo "Migrate"
 cd /var/www/app/hanov && python manage.py migrate
 
-echo 2
-python manage.py collectstatic
+echo "Generate static files"
+python manage.py collectstatic --noinput
 
-echo 3
+echo "Start python and gunicorn"
 python manage.py runserver 0.0.0.0:8000 & gunicorn --bind 0.0.0.0:7777 hanov.wsgi:application
-
-echo Server is ready

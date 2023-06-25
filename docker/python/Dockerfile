@@ -1,11 +1,5 @@
 FROM python:3.11-alpine3.18
 
-# позволяет переопределить оболочку по умолчанию, используемую для формы оболочки команд
-#SHELL ["/bin/bash", "-c"]
-
-#Копируем содержимое папки (в которой находится Dockerfile) в корень папки контейнера
-#ADD . .
-
 # set environment variables
 # запрет питону создавать в котнейнере файлы с кешом
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -29,7 +23,5 @@ COPY . /var/www/app
 RUN chmod 755 ./docker/python/init.sh
 
 ENTRYPOINT ./docker/python/init.sh
-
-#CMD [ "python", "hanov/manage.py", "runserver", "0.0.0.0:8000" ]
 
 

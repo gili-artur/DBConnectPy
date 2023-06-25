@@ -25,6 +25,8 @@ services:
       - ./../.env
     ports:
       - 7777:8000 # Слева - внешний порт, справа - внутренний
+    volumes:
+      - ${PATH_TO_STATIC}:/var/www/app/hanov/main/static #волюм на статику
     depends_on:
       - postgres
     networks:
@@ -38,12 +40,13 @@ services:
       dockerfile: ./docker/nginx/Dockerfile # путь к Dockerfile
     ports:
       - 8081:80 # Слева - внешний порт, справа - внутренний
+    volumes:
+     - ${PATH_TO_STATIC}:/var/www/app/hanov/main/static #волюм на статику
     depends_on:
       - python # смотрит на контейнер python
     networks:
       - dbcp
     restart: always
-
 
 networks:
   dbcp:

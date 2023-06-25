@@ -1,9 +1,28 @@
 # Project DBConnectPy
 
-Тестовый проект на основе Django, отображающий в UI список клиентов из базы данных.
-Также же есть рабочий API, и swagger по пути http://../swagger
+---
 
-## Quickstart
+Тестовый проект использующий фраемворк Django, отображающий в UI список клиентов из базы данных.
+Также же есть рабочий API и /swagger
+
+
+## Quickstart 1
+
+---
+1. Поменять значение переменных: `PATH_TO_PROJECT` и `PATH_TO_STATIC` в файл по пути: `docker/env/.env`
+
+   - `PATH_TO_PROJECT` - путь где лежит проект
+   - `PATH_TO_STATIC` - путь где лежит статика от проекта
+
+
+2. При помощи инструмента Make запустить сборку контейнеров `make up` либо командой 
+`docker compose -f ./docker/docker-compose.yml --env-file ./docker/env/.env up -d --build`
+   
+3. По пути http://localhost:8081 - доступен наш проект
+
+---
+
+## Quickstart 2
 
 1. Проверить что питон установлен:
 
