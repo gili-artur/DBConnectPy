@@ -31,7 +31,7 @@ services:
       - postgres
     networks:
       - dbcp
-    restart: always # Если упадет - рестарт всегда
+    restart: always # Если упадет - рестарт "всегда"
 
   nginx:
     container_name: dbcp_nginx
