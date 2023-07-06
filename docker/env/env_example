@@ -1,0 +1,19 @@
+DJANGO_SECRET_KEY=
+
+PATH_TO_PROJECT=
+PATH_TO_STATIC=
+
+# # DB Configs
+# DB_ENGINE = 'django.db.backends.postgresql'
+# DB_NAME = 'DBConnectPY'
+# DB_USER = 'admin'
+# DB_PASSWORD = 'qwerty'
+# DB_HOST = 'localhost'
+# DB_PORT = '5432'
+
+DB_ENGINE=
+DB_NAME=
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
